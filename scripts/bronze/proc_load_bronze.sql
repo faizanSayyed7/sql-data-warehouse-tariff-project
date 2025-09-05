@@ -1,6 +1,6 @@
 /*
 ===============================================================================
-Stored Procedure: bronze.load_bronze_trade_data
+Stored Procedure: Load Bronze Layer (Source -> Bronze)
 ===============================================================================
 Script Purpose:
     This stored procedure loads trade data into the 'bronze' schema from external
@@ -10,11 +10,15 @@ Script Purpose:
     - It uses the `BULK INSERT` command to load data from CSV files.
     - NOTE: Source .xlsx files must be converted to .csv format before execution.
 
+Parameters:
+    None. 
+	  This stored procedure does not accept any parameters or return any values.
+
 Usage Example:
-    EXEC bronze.load_bronze_trade_data;
+    EXEC bronze.load_bronze;
 ===============================================================================
 */
-CREATE OR ALTER PROCEDURE bronze.load_bronze_trade_data
+CREATE OR ALTER PROCEDURE bronze.load_bronze
 AS
 BEGIN
     SET NOCOUNT ON;
@@ -106,9 +110,9 @@ BEGIN
         PRINT '>> Truncating Table: bronze.global_calculated_duties';
         TRUNCATE TABLE bronze.global_calculated_duties;
         PRINT '>> Inserting Data Into: bronze.global_calculated_duties';
-        BULK INSERT bronze.global_calculated_duties FROM 'D:\datasets\global\Bangladesh_data\CalculatedDuties_Bangladesh.csv' WITH (FIRSTROW=2, FIELDTERMINATOR = ',', TABLOCK, ROWTERMINATOR = '0x0a');
-        BULK INSERT bronze.global_calculated_duties FROM 'D:\datasets\global\China_data\CalculatedDuties_China.csv' WITH (FIRSTROW=2, FIELDTERMINATOR = ',', TABLOCK, ROWTERMINATOR = '0x0a');
-        BULK INSERT bronze.global_calculated_duties FROM 'D:\datasets\global\Vietnam_data\CalculatedDuties_Vietnam.csv' WITH (FIRSTROW=2, FIELDTERMINATOR = ',', TABLOCK, ROWTERMINATOR = '0x0a');
+        BULK INSERT bronze.global_calculated_duties FROM 'D:\datasets\global_data\Bangladesh_data\CalculatedDuties_Bangladesh.csv' WITH (FIRSTROW=2, FIELDTERMINATOR = ',', TABLOCK, ROWTERMINATOR = '0x0a');
+        BULK INSERT bronze.global_calculated_duties FROM 'D:\datasets\global_data\China_data\CalculatedDuties_China.csv' WITH (FIRSTROW=2, FIELDTERMINATOR = ',', TABLOCK, ROWTERMINATOR = '0x0a');
+        BULK INSERT bronze.global_calculated_duties FROM 'D:\datasets\global_data\Vietnam_data\CalculatedDuties_Vietnam.csv' WITH (FIRSTROW=2, FIELDTERMINATOR = ',', TABLOCK, ROWTERMINATOR = '0x0a');
         SET @end_time = GETDATE();
         PRINT '>> LOAD DURATION: ' + CAST(DATEDIFF(SECOND, @start_time, @end_time) AS NVARCHAR) + ' seconds';
         PRINT '>> -----------------------------------------';
@@ -118,9 +122,9 @@ BEGIN
         PRINT '>> Truncating Table: bronze.global_customs_value';
         TRUNCATE TABLE bronze.global_customs_value;
         PRINT '>> Inserting Data Into: bronze.global_customs_value';
-        BULK INSERT bronze.global_customs_value FROM 'D:\datasets\global\Bangladesh_data\CustomsValue_Bangladesh.csv' WITH (FIRSTROW=2, FIELDTERMINATOR = ',', TABLOCK, ROWTERMINATOR = '0x0a');
-        BULK INSERT bronze.global_customs_value FROM 'D:\datasets\global\China_data\CustomsValue_China.csv' WITH (FIRSTROW=2, FIELDTERMINATOR = ',', TABLOCK, ROWTERMINATOR = '0x0a');
-        BULK INSERT bronze.global_customs_value FROM 'D:\datasets\global\Vietnam_data\CustomsValue_Vietnam.csv' WITH (FIRSTROW=2, FIELDTERMINATOR = ',', TABLOCK, ROWTERMINATOR = '0x0a');
+        BULK INSERT bronze.global_customs_value FROM 'D:\datasets\global_data\Bangladesh_data\CustomsValue_Bangladesh.csv' WITH (FIRSTROW=2, FIELDTERMINATOR = ',', TABLOCK, ROWTERMINATOR = '0x0a');
+        BULK INSERT bronze.global_customs_value FROM 'D:\datasets\global_data\China_data\CustomsValue_China.csv' WITH (FIRSTROW=2, FIELDTERMINATOR = ',', TABLOCK, ROWTERMINATOR = '0x0a');
+        BULK INSERT bronze.global_customs_value FROM 'D:\datasets\global_data\Vietnam_data\CustomsValue_Vietnam.csv' WITH (FIRSTROW=2, FIELDTERMINATOR = ',', TABLOCK, ROWTERMINATOR = '0x0a');
         SET @end_time = GETDATE();
         PRINT '>> LOAD DURATION: ' + CAST(DATEDIFF(SECOND, @start_time, @end_time) AS NVARCHAR) + ' seconds';
         PRINT '>> -----------------------------------------';
@@ -130,9 +134,9 @@ BEGIN
         PRINT '>> Truncating Table: bronze.global_first_unit_quantity';
         TRUNCATE TABLE bronze.global_first_unit_quantity;
         PRINT '>> Inserting Data Into: bronze.global_first_unit_quantity';
-        BULK INSERT bronze.global_first_unit_quantity FROM 'D:\datasets\global\Bangladesh_data\FirstUnitofQuantity_Bangladesh.csv' WITH (FIRSTROW=2, FIELDTERMINATOR = ',', TABLOCK, ROWTERMINATOR = '0x0a');
-        BULK INSERT bronze.global_first_unit_quantity FROM 'D:\datasets\global\China_data\FirstUnitofQuantity_China.csv' WITH (FIRSTROW=2, FIELDTERMINATOR = ',', TABLOCK, ROWTERMINATOR = '0x0a');
-        BULK INSERT bronze.global_first_unit_quantity FROM 'D:\datasets\global\Vietnam_data\FirstUnitofQuantity_Vietnam.csv' WITH (FIRSTROW=2, FIELDTERMINATOR = ',', TABLOCK, ROWTERMINATOR = '0x0a');
+        BULK INSERT bronze.global_first_unit_quantity FROM 'D:\datasets\global_data\Bangladesh_data\FirstUnitofQuantity_Bangladesh.csv' WITH (FIRSTROW=2, FIELDTERMINATOR = ',', TABLOCK, ROWTERMINATOR = '0x0a');
+        BULK INSERT bronze.global_first_unit_quantity FROM 'D:\datasets\global_data\China_data\FirstUnitofQuantity_China.csv' WITH (FIRSTROW=2, FIELDTERMINATOR = ',', TABLOCK, ROWTERMINATOR = '0x0a');
+        BULK INSERT bronze.global_first_unit_quantity FROM 'D:\datasets\global_data\Vietnam_data\FirstUnitofQuantity_Vietnam.csv' WITH (FIRSTROW=2, FIELDTERMINATOR = ',', TABLOCK, ROWTERMINATOR = '0x0a');
         SET @end_time = GETDATE();
         PRINT '>> LOAD DURATION: ' + CAST(DATEDIFF(SECOND, @start_time, @end_time) AS NVARCHAR) + ' seconds';
         PRINT '>> -----------------------------------------';
@@ -142,9 +146,9 @@ BEGIN
         PRINT '>> Truncating Table: bronze.global_charges_insurance_freight';
         TRUNCATE TABLE bronze.global_charges_insurance_freight;
         PRINT '>> Inserting Data Into: bronze.global_charges_insurance_freight';
-        BULK INSERT bronze.global_charges_insurance_freight FROM 'D:\datasets\global\Bangladesh_data\Charges,Insurance,andFreight_Bangladesh.csv' WITH (FIRSTROW=2, FIELDTERMINATOR = ',', TABLOCK, ROWTERMINATOR = '0x0a');
-        BULK INSERT bronze.global_charges_insurance_freight FROM 'D:\datasets\global\China_data\Charges,Insurance,andFreight_China.csv' WITH (FIRSTROW=2, FIELDTERMINATOR = ',', TABLOCK, ROWTERMINATOR = '0x0a');
-        BULK INSERT bronze.global_charges_insurance_freight FROM 'D:\datasets\global\Vietnam_data\Charges,Insurance,andFreight_Vietnam.csv' WITH (FIRSTROW=2, FIELDTERMINATOR = ',', TABLOCK, ROWTERMINATOR = '0x0a');
+        BULK INSERT bronze.global_charges_insurance_freight FROM 'D:\datasets\global_data\Bangladesh_data\Charges,Insurance,andFreight_Bangladesh.csv' WITH (FIRSTROW=2, FIELDTERMINATOR = ',', TABLOCK, ROWTERMINATOR = '0x0a');
+        BULK INSERT bronze.global_charges_insurance_freight FROM 'D:\datasets\global_data\China_data\Charges,Insurance,andFreight_China.csv' WITH (FIRSTROW=2, FIELDTERMINATOR = ',', TABLOCK, ROWTERMINATOR = '0x0a');
+        BULK INSERT bronze.global_charges_insurance_freight FROM 'D:\datasets\global_data\Vietnam_data\Charges,Insurance,andFreight_Vietnam.csv' WITH (FIRSTROW=2, FIELDTERMINATOR = ',', TABLOCK, ROWTERMINATOR = '0x0a');
         SET @end_time = GETDATE();
         PRINT '>> LOAD DURATION: ' + CAST(DATEDIFF(SECOND, @start_time, @end_time) AS NVARCHAR) + ' seconds';
         PRINT '>> -----------------------------------------';
@@ -154,9 +158,9 @@ BEGIN
         PRINT '>> Truncating Table: bronze.global_cif_import_value';
         TRUNCATE TABLE bronze.global_cif_import_value;
         PRINT '>> Inserting Data Into: bronze.global_cif_import_value';
-        BULK INSERT bronze.global_cif_import_value FROM 'D:\datasets\global\Bangladesh_data\CIFImportValue_Bangladesh.csv' WITH (FIRSTROW=2, FIELDTERMINATOR = ',', TABLOCK, ROWTERMINATOR = '0x0a');
-        BULK INSERT bronze.global_cif_import_value FROM 'D:\datasets\global\China_data\CIFImportValue_China.csv' WITH (FIRSTROW=2, FIELDTERMINATOR = ',', TABLOCK, ROWTERMINATOR = '0x0a');
-        BULK INSERT bronze.global_cif_import_value FROM 'D:\datasets\global\Vietnam_data\CIFImportValue_Vietnam.csv' WITH (FIRSTROW=2, FIELDTERMINATOR = ',', TABLOCK, ROWTERMINATOR = '0x0a');
+        BULK INSERT bronze.global_cif_import_value FROM 'D:\datasets\global_data\Bangladesh_data\CIFImportValue_Bangladesh.csv' WITH (FIRSTROW=2, FIELDTERMINATOR = ',', TABLOCK, ROWTERMINATOR = '0x0a');
+        BULK INSERT bronze.global_cif_import_value FROM 'D:\datasets\global_data\China_data\CIFImportValue_China.csv' WITH (FIRSTROW=2, FIELDTERMINATOR = ',', TABLOCK, ROWTERMINATOR = '0x0a');
+        BULK INSERT bronze.global_cif_import_value FROM 'D:\datasets\global_data\Vietnam_data\CIFImportValue_Vietnam.csv' WITH (FIRSTROW=2, FIELDTERMINATOR = ',', TABLOCK, ROWTERMINATOR = '0x0a');
         SET @end_time = GETDATE();
         PRINT '>> LOAD DURATION: ' + CAST(DATEDIFF(SECOND, @start_time, @end_time) AS NVARCHAR) + ' seconds';
         PRINT '>> -----------------------------------------';
