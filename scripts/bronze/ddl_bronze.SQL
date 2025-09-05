@@ -1,17 +1,17 @@
 /*
 ===============================================================================
-DDL Script: Create Bronze Tables for Trade Data Warehouse (India & Global Split)
+DDL Script: Create Bronze Tables (India & Global Split)
 ===============================================================================
 Script Purpose:
-    This script creates tables in the 'bronze' schema, dropping existing tables 
-    if they already exist. 
-    India and Global data are stored separately for clarity and performance.
+    This script creates India and Global trade tables in the 'bronze' schema,
+    dropping existing tables if they already exist.
 ===============================================================================
 */
 
 -- =======================================================
 -- 1. Calculated Duties (Raw)
 -- =======================================================
+
 IF OBJECT_ID('bronze.india_calculated_duties', 'U') IS NOT NULL
     DROP TABLE bronze.india_calculated_duties;
 GO
@@ -19,8 +19,8 @@ GO
 CREATE TABLE bronze.india_calculated_duties (
     data_type NVARCHAR(50),
     hts_number NVARCHAR(50),
-    item_description NVARCHAR(255),
-    report_year INT,
+    _description NVARCHAR(255),
+    _year INT,
     country NVARCHAR(50),
     quantity_desc NVARCHAR(50),
     january DECIMAL(10,2),
@@ -45,8 +45,8 @@ GO
 CREATE TABLE bronze.global_calculated_duties (
     data_type NVARCHAR(50),
     hts_number NVARCHAR(50),
-    item_description NVARCHAR(255),
-    report_year INT,
+    _description NVARCHAR(255),
+    _year INT,
     country NVARCHAR(50),
     quantity_desc NVARCHAR(50),
     january DECIMAL(10,2),
@@ -64,9 +64,11 @@ CREATE TABLE bronze.global_calculated_duties (
 );
 GO
 
+
 -- =======================================================
 -- 2. Customs Value (Raw)
 -- =======================================================
+
 IF OBJECT_ID('bronze.india_customs_value', 'U') IS NOT NULL
     DROP TABLE bronze.india_customs_value;
 GO
@@ -74,8 +76,8 @@ GO
 CREATE TABLE bronze.india_customs_value (
     data_type NVARCHAR(50),
     hts_number NVARCHAR(50),
-    item_description NVARCHAR(255),
-    report_year INT,
+    _description NVARCHAR(255),
+    _year INT,
     country NVARCHAR(50),
     quantity_desc NVARCHAR(50),
     january DECIMAL(10,2),
@@ -100,8 +102,8 @@ GO
 CREATE TABLE bronze.global_customs_value (
     data_type NVARCHAR(50),
     hts_number NVARCHAR(50),
-    item_description NVARCHAR(255),
-    report_year INT,
+    _description NVARCHAR(255),
+    _year INT,
     country NVARCHAR(50),
     quantity_desc NVARCHAR(50),
     january DECIMAL(10,2),
@@ -119,9 +121,11 @@ CREATE TABLE bronze.global_customs_value (
 );
 GO
 
+
 -- =======================================================
 -- 3. First Unit of Quantity (Raw)
 -- =======================================================
+
 IF OBJECT_ID('bronze.india_first_unit_quantity', 'U') IS NOT NULL
     DROP TABLE bronze.india_first_unit_quantity;
 GO
@@ -129,8 +133,8 @@ GO
 CREATE TABLE bronze.india_first_unit_quantity (
     data_type NVARCHAR(50),
     hts_number NVARCHAR(50),
-    item_description NVARCHAR(255),
-    report_year INT,
+    _description NVARCHAR(255),
+    _year INT,
     country NVARCHAR(50),
     quantity_desc NVARCHAR(50),
     january DECIMAL(10,2),
@@ -155,8 +159,8 @@ GO
 CREATE TABLE bronze.global_first_unit_quantity (
     data_type NVARCHAR(50),
     hts_number NVARCHAR(50),
-    item_description NVARCHAR(255),
-    report_year INT,
+    _description NVARCHAR(255),
+    _year INT,
     country NVARCHAR(50),
     quantity_desc NVARCHAR(50),
     january DECIMAL(10,2),
@@ -174,9 +178,11 @@ CREATE TABLE bronze.global_first_unit_quantity (
 );
 GO
 
+
 -- =======================================================
 -- 4. Charges, Insurance & Freight (Raw)
 -- =======================================================
+
 IF OBJECT_ID('bronze.india_charges_insurance_freight', 'U') IS NOT NULL
     DROP TABLE bronze.india_charges_insurance_freight;
 GO
@@ -184,8 +190,8 @@ GO
 CREATE TABLE bronze.india_charges_insurance_freight (
     data_type NVARCHAR(50),
     hts_number NVARCHAR(50),
-    item_description NVARCHAR(255),
-    report_year INT,
+    _description NVARCHAR(255),
+    _year INT,
     country NVARCHAR(50),
     quantity_desc NVARCHAR(50),
     january DECIMAL(10,2),
@@ -210,8 +216,8 @@ GO
 CREATE TABLE bronze.global_charges_insurance_freight (
     data_type NVARCHAR(50),
     hts_number NVARCHAR(50),
-    item_description NVARCHAR(255),
-    report_year INT,
+    _description NVARCHAR(255),
+    _year INT,
     country NVARCHAR(50),
     quantity_desc NVARCHAR(50),
     january DECIMAL(10,2),
@@ -229,9 +235,11 @@ CREATE TABLE bronze.global_charges_insurance_freight (
 );
 GO
 
+
 -- =======================================================
 -- 5. CIF Import Value (Raw)
 -- =======================================================
+
 IF OBJECT_ID('bronze.india_cif_import_value', 'U') IS NOT NULL
     DROP TABLE bronze.india_cif_import_value;
 GO
@@ -239,8 +247,8 @@ GO
 CREATE TABLE bronze.india_cif_import_value (
     data_type NVARCHAR(50),
     hts_number NVARCHAR(50),
-    item_description NVARCHAR(255),
-    report_year INT,
+    _description NVARCHAR(255),
+    _year INT,
     country NVARCHAR(50),
     quantity_desc NVARCHAR(50),
     january DECIMAL(10,2),
@@ -265,8 +273,8 @@ GO
 CREATE TABLE bronze.global_cif_import_value (
     data_type NVARCHAR(50),
     hts_number NVARCHAR(50),
-    item_description NVARCHAR(255),
-    report_year INT,
+    _description NVARCHAR(255),
+    _year INT,
     country NVARCHAR(50),
     quantity_desc NVARCHAR(50),
     january DECIMAL(10,2),
