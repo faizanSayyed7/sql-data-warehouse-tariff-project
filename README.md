@@ -13,8 +13,25 @@ The project architecture follows the modern **Medallion Architecture** pattern, 
 1.  **Bronze Layer**: Ingests and stores raw, wide-format data as-is from the source text files.
 2.  **Silver Layer**: Consolidates, cleanses, and standardizes the data into a single, unified atomic table.
 3.  **Gold Layer**: Houses the final, business-ready data modeled into a Star Schema for reporting and analytics in Tableau.
+---
+## 📊 Data Overview
+
+This project analyzes textile import data for **four key countries** into the USA:
+* 🇮🇳 **India**
+* 🇨🇳 **China**
+* 🇻🇳 **Vietnam**
+* 🇧🇩 **Bangladesh**
+
+The dataset includes monthly totals (from 2018 to 2025) for every product across **five distinct metrics**:
+
+1.  **CIF Import Value:** The total monetary value of imported goods, including Cost, Insurance, and Freight. (Unit: US Dollars)
+2.  **First Unit of Quantity:** The primary physical measure of the imported goods (e.g., kilograms, dozens, square meters). Represents import volume.
+3.  **Calculated Duties:** The amount of tariffs/taxes paid on the imported goods. (Unit: US Dollars)
+4.  **Customs Value:** The value of goods declared to customs, used for duty calculation. (Unit: US Dollars)
+5.  **Charges, Insurance & Freight (CIF Breakdown):** The specific costs associated with shipping and insuring the goods. (Unit: US Dollars)
 
 ---
+
 ## 📖 Project Overview
 
 This project involves:
