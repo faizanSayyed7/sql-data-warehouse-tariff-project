@@ -81,28 +81,13 @@ This diagram details the transformations that occur as data moves between layers
 
 ![Data Lineage Diagram](docs/images/data_lineage_diagram.png)
 
-## 📂 Repository Structure
+## 🎨 Dashboard & Visualizations
+An interactive dashboard was created in Tableau to explore the data, answer the core business questions, and allow for dynamic filtering.
 
-sql-data-warehouse-imports-project/
-│
-├── data/                     # Raw .txt datasets used for the project
-│
-├── docs/                     # Project documentation and diagrams
-│   ├── images/
-│   │   ├── project_architecture.png
-│   │   ├── data_integration_model.png
-│   │   └── data_lineage_diagram.png
-│   └── README.md             # This file
-│
-├── sql-scripts/              # SQL scripts for DDL, ETL, and DQ checks
-│   ├── 1_bronze/             # Scripts for creating and loading raw data tables
-│   ├── 2_silver/             # Scripts for creating and loading the unified table
-│   ├── 3_gold/               # Scripts for creating and loading the star schema
-│   └── 4_quality_checks/     # Scripts for validating data in each layer
-│
-└── tableau/                  # Tableau workbooks and supporting files
-├── data_exports/         # Tab-delimited .txt files exported from the Gold layer
-└── Textile_Imports_Dashboard.twbx
+### Import Analysis Dashboard
+This dashboard provides a comprehensive overview of import performance. It features high-level KPIs with Year-over-Year comparisons, a main seasonality trend chart, and interactive breakdowns by country and product category.
+
+![Main Dashboard](docs/images/dashboard_summary.png)
 
 ## 🛡️ License
 
