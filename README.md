@@ -1,6 +1,5 @@
 # USA Textile Imports: A Data Warehouse & Seasonality Analysis Project
 
-Welcome to the **USA Textile Imports Analysis** repository! 🚀
 This project demonstrates a complete, end-to-end data warehousing solution, from ingesting and transforming raw import data to generating actionable BI dashboards. Designed as a portfolio piece, it showcases industry best practices in data engineering, ETL development, and analytics.
 
 ---
