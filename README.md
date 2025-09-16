@@ -1,6 +1,6 @@
 # USA Textile Imports: A Data Warehouse & Seasonality Analysis Project
 
-This project demonstrates a complete, end-to-end data warehousing solution, from ingesting and transforming raw import data to generating actionable BI dashboards. Designed as a portfolio piece, it showcases industry best practices in data engineering, ETL development, and analytics.
+This project demonstrates a complete, end-to-end data warehousing solution, from ingesting and transforming raw import data to generating actionable dashboards.
 
 ---
 ## 🏗️ Data Architecture
@@ -40,7 +40,7 @@ This project involves:
 3.  **Data Modeling**: Building a dimensional model (Star Schema) with fact and dimension tables optimized for analytical queries.
 4.  **Analytics & Reporting**: Creating interactive Tableau dashboards to uncover seasonal trends and key business insights.
 
-🎯 This repository is an excellent resource for professionals and students looking to showcase expertise in:
+🎯 In short whole project revolves around in:
 - SQL Development & T-SQL
 - Data Architecture & Engineering
 - ETL Pipeline Development
