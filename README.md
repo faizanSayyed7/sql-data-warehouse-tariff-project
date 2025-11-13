@@ -7,7 +7,7 @@ This project demonstrates a complete, end-to-end data warehousing solution, from
 
 The project architecture follows the modern **Medallion Architecture** pattern, with distinct **Bronze**, **Silver**, and **Gold** layers built within a SQL Server data warehouse. This structure ensures data quality, traceability, and high performance for analytical queries.
 
-![Data Architecture](docs/images/project_architecture.png)
+![Data Architecture](docs/images/Architecture1.drawio.png)
 
 1.  **Bronze Layer**: Ingests and stores raw, wide-format data as-is from the source text files.
 2.  **Silver Layer**: Consolidates, cleanses, and standardizes the data into a single, unified atomic table.
